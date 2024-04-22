@@ -17,7 +17,7 @@ module.exports = function (nanorpc) {
       'avoid': false,
     })
       .where('votingweight').gt(0)
-      .where('score').gte(80)
+      /*.where('score').gte(80)(*/
       .sort('-score')
       .populate('owner')
       .exec(function (err, accounts) {
@@ -34,7 +34,7 @@ module.exports = function (nanorpc) {
   /* GET home page. */
   router.get('/principals', function (req, res, next) {
     Account.find()
-      .where('votingweight').gte((nanorpc.getTrendedStakeTotal() / 1000))
+      .where('votingweight').gte()
       .sort('-votingweight')
       .populate('owner')
       .exec(function (err, accounts) {

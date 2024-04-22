@@ -10,6 +10,7 @@ var User = require('../models/user');
 // load the auth variables
 var configAuth = require('./auth'); // use this one for testing
 
+
 module.exports = function (passport) {
 
   // =========================================================================
@@ -33,6 +34,7 @@ module.exports = function (passport) {
   // =========================================================================
   // TWITTER =================================================================
   // =========================================================================
+  /*
   passport.use(new TwitterStrategy(configAuth.twitterAuth,
     function (req, token, tokenSecret, profile, done) {
 
@@ -105,10 +107,11 @@ module.exports = function (passport) {
       });
 
     }));
-
+  */
   // =========================================================================
   // GitHub ==================================================================
   // =========================================================================
+  console.log(configAuth);
   passport.use(new GitHubStrategy(configAuth.githubAuth,
     function (req, token, refreshToken, profile, done) {
 
@@ -187,6 +190,7 @@ module.exports = function (passport) {
     // =========================================================================
     // Reddit ==================================================================
     // =========================================================================
+  /*
     passport.use(new RedditStrategy(configAuth.redditAuth,
       function (req, token, refreshToken, profile, done) {
   
@@ -267,10 +271,11 @@ module.exports = function (passport) {
         });
   
       }));
-
+    */
       // =========================================================================
       // Discord =================================================================
       // =========================================================================
+  /*
       passport.use(new DiscordStrategy(configAuth.discordAuth,
         function (req, token, refreshToken, profile, done) {
     
@@ -352,5 +357,5 @@ module.exports = function (passport) {
           });
     
         }));
-
+  */
 };

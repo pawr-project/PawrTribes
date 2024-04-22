@@ -54,9 +54,9 @@ Vue.filter('toMnano', function (value) {
   if (!value) return ''
   value = value.toString()
 
-  multNANO = Big('1000000000000000000000000000000');
+  multNANO = Big('1000000000000000000000000000');
 
-  return Big(value).div(multNANO).toFixed(6).toString()
+  return Big(value).div(multNANO).toFixed(0).toString()
 })
 
 Vue.filter('formatHash', function (hash) {

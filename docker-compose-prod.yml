@@ -1,0 +1,59 @@
+services:
+  tribesweb:
+    image: pawr/tribes-web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4000:${PORT}"
+    environment:
+      - DOMAIN=${DOMAIN}
+      - PORT=${PORT}
+      - NODE_ENV=${NODE_ENV}
+      - DOMAIN=${DOMAIN}
+      - NODE_RPC=${NODE_RPC}
+      - NODE_INTERNAL=${NODE_INTERNAL}
+      - MONGO_URL=${MONGO_URL}
+      - MONGO_SESSIONURL=${MONGO_SESSIONURL}
+      - SESSION_SECRET=${SESSION_SECRET}
+      - SENTRY_URL=${SENTRY_URL}
+      - AUTH_TWITTER_CONSUMERKEY=${AUTH_TWITTER_CONSUMERKEY}
+      - AUTH_TWITTER_CONSUMERSECRET=${AUTH_TWITTER_CONSUMERSECRET}
+      - AUTH_GITHUB_CLIENTID=${AUTH_GITHUB_CLIENTID}
+      - AUTH_GITHUB_CLIENTSECRET=${AUTH_GITHUB_CLIENTSECRET}
+      - AUTH_REDDIT_CLIENTID=${AUTH_REDDIT_CLIENTID}
+      - AUTH_REDDIT_CLIENTSECRET=${AUTH_REDDIT_CLIENTSECRET}
+      - AUTH_DISCORD_CLIENTID=${AUTH_DISCORD_CLIENTID}
+      - AUTH_DISCORD_CLIENTSECRET=${AUTH_DISCORD_CLIENTSECRET}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - DPOW_USER=${DPOW_USER}
+      - DPOW_KEY=${DPOW_KEY}
+      - DRPC_REPSONLINE=${DRPC_REPSONLINE}
+      - VERIFICATION_AMOUNT=${VERIFICATION_AMOUNT}
+      - MATOMO_URL=${MATOMO_URL}
+      - MATOMO_TOKEN=${MATOMO_TOKEN}
+      - MATOMO_SITE=${MATOMO_SITE}
+    networks:
+      - paw
+  tribescron:
+    image: pawr/tribes-cron
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - DOMAIN=${DOMAIN}
+      - NODE_RPC=${NODE_RPC}
+      - NODE_WS=${NODE_WS}
+      - MONGO_URL=${MONGO_URL}
+      - SENTRY_URL=${SENTRY_URL}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - DISCORD_HOOK=${DISCORD_HOOK}
+      - DRPC_REPSONLINE=${DRPC_REPSONLINE}
+    networks:
+      - paw
+
+  db:
+    image: mongo
+    networks:
+      - paw

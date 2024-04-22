@@ -7,9 +7,9 @@ const nano = new Nano({
   url: process.env.NODE_RPC
 });
 
-var available = 133248289218203497353846153999000000001;
-var online_stake_total = 106133443682229612835545290079262542348;
-var trended_stake_total = 103368968733464125722641480308757726616;
+var available = 172449073077413232699736635675683468997;
+var online_stake_total = available;
+var trended_stake_total = available;
 var blockcount = 0;
 
 function getAvailable(){
@@ -79,6 +79,6 @@ module.exports = {
   rpc: nano, 
   getAvailable: getAvailable,
   getOnlineStakeTotal: getOnlineStakeTotal,
-  getTrendedStakeTotal: getTrendedStakeTotal,
+  getTrendedStakeTotal: getAvailable,
   getBlockcount: getBlockcount
 };
